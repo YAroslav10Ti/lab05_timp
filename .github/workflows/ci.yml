@@ -1,0 +1,39 @@
+name: CI with Coverage
+
+on: [push, pull_request]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential cmake lcov gcovr
+
+    - name: Configure and Build
+      run: |
+        mkdir -p build && cd build
+        cmake -DENABLE_COVERAGE=ON ..
+        make
+
+    - name: Run Tests
+      run: |
+        cd build
+        ctest --output-on-failure
+
+    - name: Generate Coverage Report
+      run: |
+        cd build
+        gcovr --branches --print-summary .
+        gcovr --exclude-unreachable-branches --exclude-throw-branches --html-details -o coverage.html
+        gcovr --branches --fail-under-line 100 .
+
+    - name: Upload Coverage Report
+      uses: actions/upload-artifact@v3
+      with:
+        name: coverage-report
+        path: build/coverage.html
+        retention-days: 5
