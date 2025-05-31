@@ -1,11 +1,27 @@
-name: Basic Test
+name: Full CI
 
 on: [push]
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    
+    - name: Install dependencies
+      run: sudo apt-get install -y cmake g++ lcov gcovr
+    
+    - name: Build
+      run: |
+        cmake -B build -DENABLE_COVERAGE=ON
+        cmake --build build
+    
     - name: Test
-      run: echo "Workflow started" && ls -R
+      run: |
+        cd build
+        ctest --output-on-failure
+    
+    - name: Coverage
+      run: |
+        cd build
+        gcovr --branches --print-summary .
