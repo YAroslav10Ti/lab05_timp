@@ -1,0 +1,5 @@
+/home/vboxuser/lab05_timp/build/CMakeFiles/banking.dir
+/home/vboxuser/lab05_timp/build/CMakeFiles/banking_tests.dir
+/home/vboxuser/lab05_timp/build/CMakeFiles/coverage.dir
+/home/vboxuser/lab05_timp/build/CMakeFiles/edit_cache.dir
+/home/vboxuser/lab05_timp/build/CMakeFiles/rebuild_cache.dir
