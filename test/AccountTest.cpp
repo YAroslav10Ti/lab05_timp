@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "MockBanking.cpp"
+#include "Account.h"
 
 TEST(AccountTest, BasicFunctionality) {
     Account acc(1, 100.0);
@@ -12,7 +12,7 @@ TEST(AccountTest, BasicFunctionality) {
     
     acc.Lock();
     EXPECT_TRUE(acc.IsLocked());
-    acc.ChangeBalance(50.0);  // Не должно измениться
+    acc.ChangeBalance(50.0);
     EXPECT_EQ(acc.GetBalance(), 150.0);
     
     acc.Unlock();

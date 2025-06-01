@@ -8,9 +8,7 @@ double Account::GetBalance() const { return balance_; }
 bool Account::IsLocked() const { return is_locked_; }
 
 void Account::ChangeBalance(double diff) {
-    if (!is_locked_) {
-        balance_ += diff;
-    }
+    if (!is_locked_) balance_ += diff;
 }
 
 void Account::Lock() { is_locked_ = true; }
