@@ -1,0 +1,20 @@
+.
+├── [3~
+├── actions_log.txt
+├── CMakeLists.txt
+├── .github
+│   └── workflows
+│       └── ci.yml
+├── include
+│   ├── Account.h
+│   └── Transaction.h
+├── project_structure.txt
+├── src
+│   ├── Account.cpp
+│   └── Transaction.cpp
+└── test
+    ├── AccountTest.cpp
+    ├── MockBanking.cpp
+    └── TransactionTest.cpp
+
+6 directories, 12 files
